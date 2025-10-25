@@ -1,0 +1,18 @@
+services:
+  database:
+    image: postgres:latest
+    env_file:
+      - .env.dev
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - database_data:/var/lib/postgresql
+
+networks:
+  clickon-network:
+    driver: bridge
+
+volumes:
+  database_data:
+    driver: local
